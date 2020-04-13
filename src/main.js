@@ -3,7 +3,18 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import axios from 'axios'
+Vue.prototype.axios = axios;
+
+//全局配置过滤器
+Vue.filter('setWH', (url, arg) => {
+  return url.replace(/W\.h/,arg);
+})
+
 Vue.config.productionTip = false
+//把跟新加载的组件注册成全局的组件
+import Scroller from './components/Scroller'
+Vue.component('Scroller', Scroller)
 
 new Vue({
   router,

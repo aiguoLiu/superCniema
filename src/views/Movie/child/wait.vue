@@ -1,0 +1,320 @@
+<template>
+    <div id="wait">
+        <Scroller :handleToScroll="handleToScroll" 
+                :headleToTouchend="headleToTouchend"
+                style="height:18.3rem">
+            <ul>
+                <li id="wait_li" v-if={pulldown:pdactive}>{{pulldown}}</li>
+                <li v-for="item in waitList" :key="item.id">
+                    <div class="date">{{ item.mon }}月{{ item.day }}日 周{{ item.week }}</div>
+                    <div class="content" >
+                        <div class="imgs">
+                            <img :src="item.imgs" alt="">
+                        </div>
+                        <div class="text">
+                            <h2>{{ item.title }}</h2>
+                            <span class="num"><p>{{ item.num }}</p>人想看</span>
+                            <span class="actor">主演：<p>{{ item.actor }}</p></span>
+                            <span class="mon"><p>{{ item.year }}-0{{item.mon}}-{{item.day}}</p>上映</span>
+                            <span class="want">想看</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </Scroller>
+        
+    </div>
+</template>
+
+<script>
+import axios from 'axios'
+
+
+export default {
+    name: 'wait',
+    data() {
+        return {
+            waitList: [
+                {
+                    id: 1,
+                    imgs: require('../../../assets/imgs/dahongbao.jpg'),
+                    title: '大红包',
+                    num: '789',
+                    actor: '赵鸿飞,雷牧',
+                    year: '2020',
+                    mon: '5',
+                    day: '15',
+                    week: '五'
+                },
+                {
+                    id: 2,
+                    imgs: require('../../../assets/imgs/meirenyu.jpg'),
+                    title: '恋上美人鱼',
+                    num: '789',
+                    actor: '赵鸿飞,雷牧',
+                    year: '2020',
+                    mon: '5',
+                    day: '15',
+                    week: '五'
+                },
+                {
+                    id: 3,
+                    imgs: require('../../../assets/imgs/beipinghuiguan.jpg'),
+                    title: '北平会馆',
+                    num: '789',
+                    actor: '赵鸿飞,雷牧',
+                    year: '2020',
+                    mon: '5',
+                    day: '15',
+                    week: '五'
+                },
+                {
+                    id: 4,
+                    imgs: require('../../../assets/imgs/zhiweiyujianni.jpg'),
+                    title: '只为遇见你',
+                    num: '789',
+                    actor: '赵鸿飞,雷牧',
+                    year: '2020',
+                    mon: '5',
+                    day: '15',
+                    week: '五'
+                },
+                {
+                    id: 5,
+                    imgs: require('../../../assets/imgs/meirenyu.jpg'),
+                    title: '82号古宅',
+                    num: '789',
+                    actor: '赵鸿飞,雷牧',
+                    year: '2020',
+                    mon: '5',
+                    day: '15',
+                    week: '五'
+                },
+                {
+                    id: 6,
+                    imgs: require('../../../assets/imgs/meirenyu.jpg'),
+                    title: '82号古宅',
+                    num: '789',
+                    actor: '赵鸿飞,雷牧',
+                    year: '2020',
+                    mon: '5',
+                    day: '15',
+                    week: '五'
+                },
+                {
+                    id: 7,
+                    imgs: require('../../../assets/imgs/meirenyu.jpg'),
+                    title: '82号古宅',
+                    num: '789',
+                    actor: '赵鸿飞,雷牧',
+                    year: '2020',
+                    mon: '5',
+                    day: '15',
+                    week: '五'
+                },
+                {
+                    id: 8,
+                    imgs: require('../../../assets/imgs/meirenyu.jpg'),
+                    title: '82号古宅',
+                    num: '789',
+                    actor: '赵鸿飞,雷牧',
+                    year: '2020',
+                    mon: '5',
+                    day: '15',
+                    week: '五'
+                },
+                {
+                    id: 9,
+                    imgs: require('../../../assets/imgs/meirenyu.jpg'),
+                    title: '82号古宅',
+                    num: '789',
+                    actor: '赵鸿飞,雷牧',
+                    year: '2020',
+                    mon: '5',
+                    day: '15',
+                    week: '五'
+                },
+                {
+                    id: 10,
+                    imgs: require('../../../assets/imgs/meirenyu.jpg'),
+                    title: '82号古宅',
+                    num: '789',
+                    actor: '赵鸿飞,雷牧',
+                    year: '2020',
+                    mon: '5',
+                    day: '15',
+                    week: '五'
+                }
+            ],
+            myheight: {
+                height: '0px'
+            },
+            pulldown: '',
+            pdactive: false
+        }
+    },
+    mounted() {
+        // axios({
+        //     url: "http://m.maoyan.com/ajax/moreComingList?ci=217&token=&limit=10&movieIds=665702%2C1318812%2C1208919%2C1238922%2C1301478%2C1301774%2C1241385%2C1233290%2C1294417%2C1197077&optimus_uuid=5C7E0C207AE711EA9A65AFEB74502EE154D4D81E648F47678313DD36098C6E1E&optimus_risk_level=71&optimus_code=10",
+           
+        // }).then( res => {
+        //     console.log(res);
+            
+        // })
+        // 让数据加载完毕后干什么事情
+        // this.$nextTick( () =>{ })
+        
+
+        // scroll.on('scroll', (pos) => {
+        //     // console.log('scroll');
+        //     if(pos.y > 50){
+        //         this.pulldown = '正在跟新中'
+        //     }
+        // })
+        // scroll.on('touchEnd',(pos) => {
+        //     // console.log('touchend');
+        //     if(pos.y > 50){
+        //         //这里可以重新发送ajax请求新数据
+        //         this.pulldown = '更新成功'
+        //         setTimeout(() => {
+        //             this.pulldown = ''
+        //         },2000)
+        //     }
+        // })
+
+        
+    },
+    methods: {
+        handleToScroll(pos) {
+            if(pos.y > 5){
+                this.pulldown = '正在跟新中'
+                this.pdactive = false
+            }
+        },
+        headleToTouchend(pos) {
+             if(pos.y > 10){
+                //这里可以重新发送ajax请求新数据
+                this.pulldown = '更新成功'
+                setTimeout(() => {
+                    this.pdactive = true
+                    this.pulldown = ''
+                },2000)
+            }
+        }
+
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    #wait{
+        ul {
+            #wait_li {
+                height: 2.5rem;
+                line-height: 2.5rem;
+                font-size: .8125rem;
+                margin: 0;
+                padding: 0;
+                background: rgba(0, 0, 0, .8);
+            }
+            .pulldown {
+                transform: translateY(-3rem);
+            }
+            li {
+                width: 100%;
+                height: 8.4375rem;
+                .date {
+                    width: 80%;
+                    height: 1.25rem;
+                    line-height: 1.25rem;
+                    font-size: .9375rem;
+                    margin-left: 1.25rem;
+                }
+                .content {
+                    width: 100%;
+                    height: 7.1875rem;
+                    .imgs {
+                        float: left;
+                        width: 4.0625rem;
+                        height: 6.25rem;
+                        margin: .5rem .8125rem;
+                        img {
+                            width: 4.0625rem;
+                            height: 6.25rem;
+                        }
+                    }
+                    .text {
+                        position: relative;
+                        float: right;
+                        width: 70%;
+                        height: 7.1875rem;
+                        margin-right: .625rem;
+                        z-index: -1;
+                        h2 {
+                            display: block;
+                            width: 100%;
+                            height: 1.875rem;
+                            line-height: 1.875rem;
+                            font-size: 1.0625rem;
+                            margin-top: .625rem;
+                        }
+                        .num {
+                            display: block;
+                            width: 100%;
+                            height: 1.25rem;
+                            line-height: 1.25rem;
+                            font-size: .6875rem;
+                            p {
+                                display: inline;
+                                color: #faaf00;
+                                font-size: 1rem;
+                                font-weight: 900;
+                            }
+                        }
+                        .actor {
+                            display: block;
+                            width: 100%;
+                            height: 1.25rem;
+                            line-height: 1.25rem;
+                            font-size: .6875rem;
+                            margin-top: .1875rem;
+                            p {
+                                display: inline;
+                                font-size: .6875rem;
+                            }
+                        }
+                        .mon {
+                            display: block;
+                            width: 100%;
+                            height: 1.25rem;
+                            line-height: 1.25rem;
+                            font-size: .6875rem;
+                            p {
+                                display: inline;
+                                font-size: .6875rem;
+                            }
+                        }
+                        .want {
+                            position: absolute;
+                            top: 30%;
+                            right: .625rem;
+                            width: 3.125rem;
+                            height: 1.5625rem;
+                            line-height: 1.5625rem;
+                            background-color: #faaf00;
+                            text-align: center;
+                            font-size: .875rem;
+                            font-weight: 700;
+                            color: #fff;
+                            border-radius: .25rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+</style>
