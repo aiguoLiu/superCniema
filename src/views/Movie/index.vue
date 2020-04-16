@@ -2,10 +2,10 @@
     <div id="movie">
         <Header>
             <h1 slot="text">超级电影</h1>
-            <i class="iconfont" slot="right" @click="headleClick">&#xe71b;</i>
+            <i class="iconfont" slot="right" @click="isShow = !isShow">&#xe71b;</i>
         </Header>
         <div class="windows" 
-            v-if="isShow">
+            v-if="isShow" >
             <div>首页</div>
             <div>电影</div>
             <div>影院</div>
@@ -22,6 +22,8 @@
             </keep-alive>
         </div>
         <Topbar/>
+        <!-- 命名视图 -->
+        <router-view name="detail"/>
     </div>
 </template>
 
@@ -45,10 +47,17 @@ export default {
         Top,
         Topbar
     },
+    mounted() {
+        // 点击页面任何位置让弹框消失
+        // let _this = this
+        // document.addEventListener('click', (e) => {
+        //     if(e.target.className != 'windows'){
+        //         _this.isShow = false
+        //     }
+        // })
+    },
     methods: {
-        headleClick() {
-            this.isShow = !this.isShow
-        }
+       
     }
 }
 </script>

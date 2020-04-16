@@ -5,14 +5,17 @@ import movieRouter from './movie'
 import fileproRouter from './filepro'
 import cinemaRouter from './cinema'
 
-import detailRouter from './Detail'
+
+import seachRouter from './Seach'
 Vue.use(VueRouter)
 
   const routes = [
     movieRouter,
     fileproRouter,
     cinemaRouter,
-    detailRouter,
+
+    seachRouter,
+    // 默认路由
     {
       path: '',
       redirect: '/movie' 
@@ -22,6 +25,7 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
+  // base: super_cinema,
   routes
 })
 

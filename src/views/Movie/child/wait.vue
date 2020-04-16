@@ -4,11 +4,14 @@
                 :headleToTouchend="headleToTouchend"
                 style="height:18.3rem">
             <ul>
-                <li id="wait_li" v-if={pulldown:pdactive}>{{pulldown}}</li>
+                <div id="wait_li" :class="{pulldown:pdactive}">
+                    <span class="text">{{ pulldown }}</span>
+                    <i class="iconfont" v-show="icon">&#xe66c;</i>
+                </div>
                 <li v-for="item in waitList" :key="item.id">
                     <div class="date">{{ item.mon }}月{{ item.day }}日 周{{ item.week }}</div>
                     <div class="content" >
-                        <div class="imgs">
+                        <div class="imgs" @tap="handleClick(item.id)">
                             <img :src="item.imgs" alt="">
                         </div>
                         <div class="text">
@@ -40,7 +43,7 @@ export default {
                     imgs: require('../../../assets/imgs/dahongbao.jpg'),
                     title: '大红包',
                     num: '789',
-                    actor: '赵鸿飞,雷牧',
+                    actor: '赵鸿飞,雷牧,张艺兴，诸葛大力',
                     year: '2020',
                     mon: '5',
                     day: '15',
@@ -81,19 +84,19 @@ export default {
                 },
                 {
                     id: 5,
-                    imgs: require('../../../assets/imgs/meirenyu.jpg'),
-                    title: '82号古宅',
-                    num: '789',
+                    imgs: require('../../../assets/imgs/liulangdiqiu.jpg'),
+                    title: '流浪地球',
+                    num: '11789',
                     actor: '赵鸿飞,雷牧',
                     year: '2020',
                     mon: '5',
                     day: '15',
-                    week: '五'
+                    week: '四'
                 },
                 {
                     id: 6,
-                    imgs: require('../../../assets/imgs/meirenyu.jpg'),
-                    title: '82号古宅',
+                    imgs: require('../../../assets/imgs/nvshengsushe.jpg'),
+                    title: '女生宿舍',
                     num: '789',
                     actor: '赵鸿飞,雷牧',
                     year: '2020',
@@ -103,8 +106,8 @@ export default {
                 },
                 {
                     id: 7,
-                    imgs: require('../../../assets/imgs/meirenyu.jpg'),
-                    title: '82号古宅',
+                    imgs: require('../../../assets/imgs/wufengyeqilang.jpg'),
+                    title: '无风也起浪',
                     num: '789',
                     actor: '赵鸿飞,雷牧',
                     year: '2020',
@@ -114,8 +117,8 @@ export default {
                 },
                 {
                     id: 8,
-                    imgs: require('../../../assets/imgs/meirenyu.jpg'),
-                    title: '82号古宅',
+                    imgs: require('../../../assets/imgs/mangmaifengzhang.jpg'),
+                    title: '莽麦疯长',
                     num: '789',
                     actor: '赵鸿飞,雷牧',
                     year: '2020',
@@ -150,6 +153,7 @@ export default {
                 height: '0px'
             },
             pulldown: '',
+            icon: false,
             pdactive: false
         }
     },
@@ -187,21 +191,30 @@ export default {
     methods: {
         handleToScroll(pos) {
             if(pos.y > 5){
-                this.pulldown = '正在跟新中'
-                this.pdactive = false
+                this.pulldown = '正在跟新中...'
+                this.icon = true
+                this.pdactive = true
             }
         },
         headleToTouchend(pos) {
              if(pos.y > 10){
                 //这里可以重新发送ajax请求新数据
-                this.pulldown = '更新成功'
                 setTimeout(() => {
-                    this.pdactive = true
+                    this.pulldown = '更新成功'
+                    this.icon = false
+                    setTimeout(() => {
+                    this.pdactive = false
                     this.pulldown = ''
+                },1000)
                 },2000)
+                
+                
             }
-        }
+        },
 
+        handleClick(movieId) {
+            this.$router.push('/movie/detail/' + movieId)
+        }
     }
 }
 </script>
@@ -214,15 +227,38 @@ export default {
     #wait{
         ul {
             #wait_li {
-                height: 2.5rem;
-                line-height: 2.5rem;
-                font-size: .8125rem;
-                margin: 0;
-                padding: 0;
-                background: rgba(0, 0, 0, .8);
+                width: 100%;
+                span {
+                    display: inline-block;
+                }
+                i {
+                    display: inline-block;
+                    width: 2rem;
+                    height: 2rem;
+                    line-height: 2rem;
+                    font-size: 2rem;
+                    text-align: center;
+                    animation: rotating 2s linear infinite;
+                }
+                @keyframes rotating {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+                    100% {
+                        transform: rotate(1turn);
+                    }
+                }
+                .text {
+                    width: 30%;
+                    line-height: 2.5rem;
+                    margin-left: 35%;
+                    font-size: .9375rem;
+                    font-weight: 600;
+                    text-align: center;
+                }
             }
             .pulldown {
-                transform: translateY(-3rem);
+                height: 2.5rem;
             }
             li {
                 width: 100%;
@@ -277,11 +313,14 @@ export default {
                         }
                         .actor {
                             display: block;
-                            width: 100%;
+                            width: 56%;
                             height: 1.25rem;
                             line-height: 1.25rem;
                             font-size: .6875rem;
                             margin-top: .1875rem;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
                             p {
                                 display: inline;
                                 font-size: .6875rem;

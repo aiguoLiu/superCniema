@@ -18,7 +18,7 @@
                 </span>
             </router-link>
         </div>
-        <div class="right">
+        <div class="right" @click="handleChangePage">
             <i class="iconfont">&#xe67d;</i>
         </div>
     </div>
@@ -26,7 +26,13 @@
 
 <script>
 export default {
-
+    name: 'top',
+    methods: {
+        handleChangePage() {
+            //编程式导航简单的跳转到seach页面
+            this.$router.push(`/seach`)
+        }
+    }
 }
 </script>
 

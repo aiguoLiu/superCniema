@@ -9,7 +9,7 @@
             <div class="city">
                 赣州<i>▼</i>
             </div>
-            <div class="seach">
+            <div class="seach" @click="handleChangePage()">
                 <i class="iconfont">&#xe67d;</i>
                 <span>搜影院</span>
             </div>
@@ -41,7 +41,12 @@ export default {
            
         }
     },
-    
+    methods: {
+        handleChangePage() {
+            //编程式导航简单的跳转到seach页面
+            this.$router.push(`/seach`)
+        }
+    }
     
 }
 </script>

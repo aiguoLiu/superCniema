@@ -58,25 +58,25 @@ export default {
                 },
                 {
                     id: 4,
-                    imgs: require('../../../assets/imgs/mating.jpg'),
+                    imgs: require('../../../assets/imgs/zhangyixing.jpg'),
                     nm: '王小利',
                     title: '1. 能打能怼能抗疫，除了威尔·史密斯还有谁！'
                 },
                 {
                     id: 5,
-                    imgs: require('../../../assets/imgs/mating.jpg'),
+                    imgs: require('../../../assets/imgs/lijinming.jpg'),
                     nm: '陈浩明',
                     title: '1. 能打能怼能抗疫，除了威尔·史密斯还有谁！'
                 },
                 {
                     id: 6,
-                    imgs: require('../../../assets/imgs/mating.jpg'),
+                    imgs: require('../../../assets/imgs/zhugedali.jpg'),
                     nm: '陈浩明',
                     title: '1. 能打能怼能抗疫，除了威尔·史密斯还有谁！'
                 },
                 {
                     id: 7,
-                    imgs: require('../../../assets/imgs/mating.jpg'),
+                    imgs: require('../../../assets/imgs/wangxiaoli.jpg'),
                     nm: '陈浩明',
                     title: '1. 能打能怼能抗疫，除了威尔·史密斯还有谁！'
                 },

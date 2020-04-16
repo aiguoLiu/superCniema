@@ -6,6 +6,69 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "493283",
+      "name": "刷新",
+      "font_class": "shuaxin",
+      "unicode": "e794",
+      "unicode_decimal": 59284
+    },
+    {
+      "icon_id": "969791",
+      "name": "加载",
+      "font_class": "loading",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "1486824",
+      "name": "加载",
+      "font_class": "jiazai",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "1617817",
+      "name": "1117加载中",
+      "font_class": "jiazaizhong",
+      "unicode": "e6af",
+      "unicode_decimal": 59055
+    },
+    {
+      "icon_id": "1617818",
+      "name": "1116加载中",
+      "font_class": "jiazaizhong1",
+      "unicode": "e6b0",
+      "unicode_decimal": 59056
+    },
+    {
+      "icon_id": "1881610",
+      "name": "符号-状态-加载",
+      "font_class": "loading-icon-round",
+      "unicode": "e6b3",
+      "unicode_decimal": 59059
+    },
+    {
+      "icon_id": "2552658",
+      "name": "更多-加载图",
+      "font_class": "jiazaitu",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
+    },
+    {
+      "icon_id": "7629052",
+      "name": "加载",
+      "font_class": "jiazai1",
+      "unicode": "e6b4",
+      "unicode_decimal": 59060
+    },
+    {
+      "icon_id": "7903217",
+      "name": "hman-加载",
+      "font_class": "jiazai2",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
       "icon_id": "3652974",
       "name": "分类",
       "font_class": "fenlei",
