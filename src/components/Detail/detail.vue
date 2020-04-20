@@ -14,7 +14,9 @@
                     </div>
                 </div>
                 <AboutMoive/>
-
+                <div id="fixed" :class="{fixedHover:isClick}" @click="handleClick">
+                    <a href="javascript:;">立即购票</a>
+                </div>
             </div>
         <!-- </Scroller> -->
     </div>
@@ -29,6 +31,11 @@ import AboutMoive from './child/aboutMoive'
 
 export default {
     name: 'Detail',
+    data() {
+        return {
+            isClick: false
+        }
+    },
     // 接受到传过来的id
     props: ['movieId'],
     components: {
@@ -39,10 +46,13 @@ export default {
         AboutMoive
     },
     methods: {
-
+        handleClick() {
+            this.isClick = !
+            this.isClick
+        }
     },
     mounted() {
-        console.log(this.movieId);
+        // console.log(this.movieId);
         
     }
 }
@@ -72,6 +82,39 @@ export default {
             background-color:rgba(255, 255, 255, .1);
             } 
         }
-       
+       #fixed {
+           position: fixed;
+           bottom: 5rem;
+           right: 1rem;
+           width: 5rem;
+           height: 2.5rem;
+           background-color: rgba(253, 171, 19,.8);
+        //    box-shadow: 0 5px 7px rgba(200, 200, 200, .8);
+           border-radius: .625rem;
+           a {
+               display: block;
+               width: 100%;
+               height: 2.5rem;
+               font-size: 1rem;
+               line-height: 2.5rem;
+               color: yellow;
+                text-align: center;
+                font-weight: 600;
+           }
+       }
+       .fixedHover {
+           animation: .5s cute;
+       }
+       @keyframes cute {
+           0%,100% {
+               transform: scale(1,1);
+           }
+           25%,75% {
+               transform: scale(1.1,.9);
+           }
+           50% {
+               transform: scale(.9,1.1);
+           }
+       }
     }
 </style>

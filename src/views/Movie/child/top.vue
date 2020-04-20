@@ -1,8 +1,8 @@
 <template>
     <div id="top">
         <div class="left">
-            <div>
-                <span>赣州</span>
+            <div @click="handleClick">
+                <span>{{ $store.state.city.nm }}</span>
                 <i>▼</i>
             </div>
         </div>
@@ -31,6 +31,9 @@ export default {
         handleChangePage() {
             //编程式导航简单的跳转到seach页面
             this.$router.push(`/seach`)
+        },
+        handleClick() {
+            this.$router.push(`/city`)
         }
     }
 }
@@ -47,11 +50,11 @@ export default {
             div {
                 span {
                     display: inline-block;
-                    width: 60%;
-                    height: 1.25rem;
-                    text-align: right;
-                    line-height: 1.25rem;
                     margin-top: .625rem;
+                    margin-left: 0.5rem;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    // overflow: hidden;
                 }
                 i {
                     display: inline-block;

@@ -20,6 +20,13 @@
                 </div>
             </div>
         </div>
+        <!-- <div class="actor_name">
+            <span class="actor_people">剧照</span>
+            <span class="sums">
+                <p class="sum">全部10张</p>
+                <i class="iconfont">&#xe641;</i>
+            </span>
+        </div> -->
     </div>
 </template>
 
@@ -135,7 +142,7 @@ export default {
         .actor_imgs {
             width: 93%;
             height: 10rem;
-            margin-top: .625rem;
+            // margin-top: ;
             .long {
                 display: flex;
                 overflow-x: scroll;

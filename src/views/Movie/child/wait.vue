@@ -8,7 +8,7 @@
                     <span class="text">{{ pulldown }}</span>
                     <i class="iconfont" v-show="icon">&#xe66c;</i>
                 </div>
-                <li v-for="item in waitList" :key="item.id">
+                <li v-for="(item, index) in waitList" :key="item.id">
                     <div class="date">{{ item.mon }}月{{ item.day }}日 周{{ item.week }}</div>
                     <div class="content" >
                         <div class="imgs" @tap="handleClick(item.id)">
@@ -19,22 +19,25 @@
                             <span class="num"><p>{{ item.num }}</p>人想看</span>
                             <span class="actor">主演：<p>{{ item.actor }}</p></span>
                             <span class="mon"><p>{{ item.year }}-0{{item.mon}}-{{item.day}}</p>上映</span>
-                            <span class="want">想看</span>
                         </div>
+                        <span id="want" v-show="!item.isTrue" @tap="handleClickWant(index)">想看</span>
+                        <p id="wantCopy" v-show="item.isTrue" @tap="handleClickNowant(index)">已想看</p>
                     </div>
                 </li>
             </ul>
         </Scroller>
-        
+        <PopWindow v-show="isShow"/>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
 
+import PopWindow from '@/components/PopUpWindow'
 
 export default {
     name: 'wait',
+    props: '',
     data() {
         return {
             waitList: [
@@ -47,7 +50,8 @@ export default {
                     year: '2020',
                     mon: '5',
                     day: '15',
-                    week: '五'
+                    week: '五',
+                    isTrue: false
                 },
                 {
                     id: 2,
@@ -58,7 +62,8 @@ export default {
                     year: '2020',
                     mon: '5',
                     day: '15',
-                    week: '五'
+                    week: '五',
+                    isTrue: false
                 },
                 {
                     id: 3,
@@ -69,7 +74,8 @@ export default {
                     year: '2020',
                     mon: '5',
                     day: '15',
-                    week: '五'
+                    week: '五',
+                    isTrue: false
                 },
                 {
                     id: 4,
@@ -80,7 +86,8 @@ export default {
                     year: '2020',
                     mon: '5',
                     day: '15',
-                    week: '五'
+                    week: '五',
+                    isTrue: false
                 },
                 {
                     id: 5,
@@ -91,7 +98,8 @@ export default {
                     year: '2020',
                     mon: '5',
                     day: '15',
-                    week: '四'
+                    week: '四',
+                    isTrue: false
                 },
                 {
                     id: 6,
@@ -102,7 +110,8 @@ export default {
                     year: '2020',
                     mon: '5',
                     day: '15',
-                    week: '五'
+                    week: '五',
+                    isTrue: false
                 },
                 {
                     id: 7,
@@ -113,7 +122,8 @@ export default {
                     year: '2020',
                     mon: '5',
                     day: '15',
-                    week: '五'
+                    week: '五',
+                    isTrue: false
                 },
                 {
                     id: 8,
@@ -124,7 +134,8 @@ export default {
                     year: '2020',
                     mon: '5',
                     day: '15',
-                    week: '五'
+                    week: '五',
+                    isTrue: false
                 },
                 {
                     id: 9,
@@ -135,7 +146,8 @@ export default {
                     year: '2020',
                     mon: '5',
                     day: '15',
-                    week: '五'
+                    week: '五',
+                    isTrue: false
                 },
                 {
                     id: 10,
@@ -146,7 +158,8 @@ export default {
                     year: '2020',
                     mon: '5',
                     day: '15',
-                    week: '五'
+                    week: '五',
+                    isTrue: false
                 }
             ],
             myheight: {
@@ -154,8 +167,12 @@ export default {
             },
             pulldown: '',
             icon: false,
-            pdactive: false
+            pdactive: false,
+            isShow: false
         }
+    },
+    components: {
+        PopWindow
     },
     mounted() {
         // axios({
@@ -189,6 +206,16 @@ export default {
         
     },
     methods: {
+        handleClickWant(index) {
+            this.isShow = true
+            this.waitList[index].isTrue = true
+            setTimeout( () => {
+                this.isShow = false
+            },600)
+        },
+        handleClickNowant(index) {
+            this.waitList[index].isTrue = false
+        },
         handleToScroll(pos) {
             if(pos.y > 5){
                 this.pulldown = '正在跟新中...'
@@ -261,6 +288,7 @@ export default {
                 height: 2.5rem;
             }
             li {
+                position: relative;
                 width: 100%;
                 height: 8.4375rem;
                 .date {
@@ -337,7 +365,9 @@ export default {
                                 font-size: .6875rem;
                             }
                         }
-                        .want {
+                        
+                    }
+                    #want {
                             position: absolute;
                             top: 30%;
                             right: .625rem;
@@ -351,7 +381,18 @@ export default {
                             color: #fff;
                             border-radius: .25rem;
                         }
-                    }
+                        #wantCopy {
+                            position: absolute;
+                            top: 30%;
+                            right: .625rem;
+                            width: 3.125rem;
+                            height: 1.5625rem;
+                            line-height: 1.5625rem;
+                            text-align: center;
+                            font-size: .875rem;
+                            font-weight: 700;
+                            color: #cccccc;
+                        }
                 }
             }
         }

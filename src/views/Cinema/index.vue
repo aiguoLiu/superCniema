@@ -6,8 +6,8 @@
         <Movie/>
         <div class="kongge"></div>
         <div class="seach_box">
-            <div class="city">
-                赣州<i>▼</i>
+            <div class="city" @click="handleClick">
+                {{ $store.state.city.nm }}<i>▼</i>
             </div>
             <div class="seach" @click="handleChangePage()">
                 <i class="iconfont">&#xe67d;</i>
@@ -45,6 +45,9 @@ export default {
         handleChangePage() {
             //编程式导航简单的跳转到seach页面
             this.$router.push(`/seach`)
+        },
+        handleClick() {
+            this.$router.push(`/city`)
         }
     }
     
@@ -59,7 +62,7 @@ export default {
             width: 33.333%;
             font-size: 1.125rem;
             text-align: center;
-            font-weight: normal;
+            font-weight: 600;
         }
         .kongge {
             width: 100%;

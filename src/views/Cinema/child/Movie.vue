@@ -5,7 +5,7 @@
                 <div class="content" :style="{width:Widths}">
                     <div class="list" v-for="(list, index) in cinemaList" :key="list.id">
                         <div class="xing" @tap="Click(index)">
-                            <span :class="{active: index === currentIndex}"></span>
+                            <span :class="{active:list.isTrue}"></span>
                             <!-- <img v-else src="../../assets/imgs/want-to-watch-red.png" alt=""> -->
                         </div>
                         <img :src="list.image" alt="">
@@ -14,33 +14,23 @@
                     </div>
                 </div>
             </Scroller>
+            <pop-up-window v-show="isShow"></pop-up-window>
         </div>
 </template>
 
 <script>
+import PopUpWindow from '@/components/PopUpWindow'
+
 export default {
     name: 'Movie',
     data() {
         return {
             Widths: '0px',
-            isShow: [],
-            currentIndex: 0,
+            isShow: false,
+            currentIndex: -1,
             cinemaList: [
                 {
                     id: 1,
-                    image: require('../../../assets/imgs/beipinghuiguan.jpg'),
-                    movie: '大红包',
-                    nm: '环球财富国际影城',
-                    add: '宁都县中山北路95号财富时代广场四楼',
-                    city: '宁都',
-                    one: '退',
-                    tow: '改签',
-                    three: '小吃',
-                    four: '折扣卡',
-                    distance: '2.3'
-                },
-                {
-                    id: 2,
                     image: require('../../../assets/imgs/beipinghuiguan.jpg'),
                     movie: '北平会馆',
                     nm: '环球财富国际影城',
@@ -50,7 +40,22 @@ export default {
                     tow: '改签',
                     three: '小吃',
                     four: '折扣卡',
-                    distance: '2.3'
+                    distance: '2.3',
+                    isTrue: false
+                },
+                {
+                    id: 2,
+                    image: require('../../../assets/imgs/liulangdiqiu.jpg'),
+                    movie: '流浪地球',
+                    nm: '环球财富国际影城',
+                    add: '宁都县中山北路95号财富时代广场四楼',
+                    city: '宁都',
+                    one: '退',
+                    tow: '改签',
+                    three: '小吃',
+                    four: '折扣卡',
+                    distance: '2.3',
+                    isTrue: false 
                 },
                 {
                     id: 3,
@@ -63,12 +68,13 @@ export default {
                     tow: '改签',
                     three: '小吃',
                     four: '折扣卡',
-                    distance: '2.3'
+                    distance: '2.3',
+                    isTrue: false
                 },
                 {
                     id: 4,
-                    image: require('../../../assets/imgs/beipinghuiguan.jpg'),
-                    movie: '大红包',
+                    image: require('../../../assets/imgs/aiqinggongyufour.jpg'),
+                    movie: '爱情公寓4',
                     nm: '环球财富国际影城',
                     add: '宁都县中山北路95号财富时代广场四楼',
                     city: '宁都',
@@ -76,20 +82,74 @@ export default {
                     tow: '改签',
                     three: '小吃',
                     four: '折扣卡',
-                    distance: '2.3'
+                    distance: '2.3',
+                    isTrue: false
+                },
+                {
+                    id: 5,
+                    image: require('../../../assets/imgs/aiqinggongyufive.jpg'),
+                    movie: '爱情公寓5',
+                    nm: '环球财富国际影城',
+                    add: '宁都县中山北路95号财富时代广场四楼',
+                    city: '宁都',
+                    one: '退',
+                    tow: '改签',
+                    three: '小吃',
+                    four: '折扣卡',
+                    distance: '2.3',
+                    isTrue: false
+                },
+                {
+                    id: 6,
+                    image: require('../../../assets/imgs/nvshengsushe.jpg'),
+                    movie: '女生宿舍',
+                    nm: '环球财富国际影城',
+                    add: '宁都县中山北路95号财富时代广场四楼',
+                    city: '宁都',
+                    one: '退',
+                    tow: '改签',
+                    three: '小吃',
+                    four: '折扣卡',
+                    distance: '2.3',
+                    isTrue: false
+                },
+                {
+                    id: 7,
+                    image: require('../../../assets/imgs/wufengyeqilang.jpg'),
+                    movie: '无风也起浪',
+                    nm: '环球财富国际影城',
+                    add: '宁都县中山北路95号财富时代广场四楼',
+                    city: '宁都',
+                    one: '退',
+                    tow: '改签',
+                    three: '小吃',
+                    four: '折扣卡',
+                    distance: '2.3',
+                    isTrue: false
                 },
             ],
+            clickNum: 0,
+            cinemaListCopy: []
         }
+    },
+    components: {
+        PopUpWindow
     },
     mounted() {
         // let ss = this.Widths =0.75 * (this.cinemaList.length + 1) + 4.6875 * this.cinemaList.length + 'rem'
         this.Widths = 0.75 * (this.cinemaList.length + 1) + 4.6875 * this.cinemaList.length + 'rem'
         
+        
+        
     },
     methods: {
         Click(index) {
-            console.log(index);
-            this.isShow = 1
+            this.cinemaList[index].isTrue = !this.cinemaList[index].isTrue
+            this.isShow = true
+            setTimeout( () => {
+                this.isShow = false
+            },600)
+            
         }
     },
 }

@@ -59,25 +59,25 @@ export default {
                 {
                     id: 4,
                     imgs: require('../../../assets/imgs/zhangyixing.jpg'),
-                    nm: '王小利',
+                    nm: '张艺兴',
                     title: '1. 能打能怼能抗疫，除了威尔·史密斯还有谁！'
                 },
                 {
                     id: 5,
                     imgs: require('../../../assets/imgs/lijinming.jpg'),
-                    nm: '陈浩明',
+                    nm: '李金铭',
                     title: '1. 能打能怼能抗疫，除了威尔·史密斯还有谁！'
                 },
                 {
                     id: 6,
                     imgs: require('../../../assets/imgs/zhugedali.jpg'),
-                    nm: '陈浩明',
+                    nm: '成果',
                     title: '1. 能打能怼能抗疫，除了威尔·史密斯还有谁！'
                 },
                 {
                     id: 7,
                     imgs: require('../../../assets/imgs/wangxiaoli.jpg'),
-                    nm: '陈浩明',
+                    nm: '王小利',
                     title: '1. 能打能怼能抗疫，除了威尔·史密斯还有谁！'
                 },
             ],
@@ -87,7 +87,7 @@ export default {
     mounted() {
 
         let ss = this.Widths =0.75 * (this.movieimgs.length + 1) + 4.6875 * this.movieimgs.length + 'rem'
-        console.log(ss);
+        // console.log(ss);
         
         // this.axios.get('api/movieOnInfoList?cityId=10').then((res) => {
         //     console.log(res);

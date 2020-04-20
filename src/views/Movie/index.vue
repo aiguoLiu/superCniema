@@ -74,7 +74,7 @@ export default {
             width: 33.333%;
             font-size: 1.125rem;
             text-align: center;
-            font-weight: normal;
+            font-weight: 600;
         }
         i {
             float: right;

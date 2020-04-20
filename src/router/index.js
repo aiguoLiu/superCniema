@@ -4,8 +4,7 @@ import VueRouter from 'vue-router'
 import movieRouter from './movie'
 import fileproRouter from './filepro'
 import cinemaRouter from './cinema'
-
-
+import cityRouter from './city'
 import seachRouter from './Seach'
 Vue.use(VueRouter)
 
@@ -13,7 +12,7 @@ Vue.use(VueRouter)
     movieRouter,
     fileproRouter,
     cinemaRouter,
-
+    cityRouter,
     seachRouter,
     // 默认路由
     {
