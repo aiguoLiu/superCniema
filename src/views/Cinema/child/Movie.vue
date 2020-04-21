@@ -23,6 +23,7 @@ import PopUpWindow from '@/components/PopUpWindow'
 
 export default {
     name: 'Movie',
+    props: '',
     data() {
         return {
             Widths: '0px',
@@ -148,9 +149,13 @@ export default {
             this.isShow = true
             setTimeout( () => {
                 this.isShow = false
-            },600)
+            },500)
             
-        }
+        },
+
+        // pageSkip(movieId) {
+        //     this.$router.push('/cinema/detail/' + movieId)
+        // }
     },
 }
 </script>

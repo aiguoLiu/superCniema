@@ -6,6 +6,7 @@
             <ul>
                 <div id="wait_li" :class="{pulldown:pdactive}">
                     <span class="text">{{ pulldown }}</span>
+                    <!-- &#xe66c; -->
                     <i class="iconfont" v-show="icon">&#xe66c;</i>
                 </div>
                 <li v-for="(item, index) in waitList" :key="item.id">
@@ -209,12 +210,14 @@ export default {
         handleClickWant(index) {
             this.isShow = true
             this.waitList[index].isTrue = true
+            this.waitList[index].num++
             setTimeout( () => {
                 this.isShow = false
             },600)
         },
         handleClickNowant(index) {
             this.waitList[index].isTrue = false
+            this.waitList[index].num--
         },
         handleToScroll(pos) {
             if(pos.y > 5){

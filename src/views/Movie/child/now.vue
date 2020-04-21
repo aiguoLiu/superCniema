@@ -7,7 +7,7 @@
                     <Scroller style="height: 8.75rem">
                         <div class="content" :style="{width:Widths}">
                             <div class="list" v-for="item in movieimgs" :key="item.id">
-                                <img :src="item.imgs" alt="">
+                                <img :src="item.imgs" @tap="handleClick" alt="">
                                 <span class="name">{{ item.nm }}</span>
                             </div>
                         </div>
@@ -37,6 +37,7 @@ export default {
         return {
             // movieLists: []
             //虚假数据
+
             movieimgs: [
                 {
                     id: 1,
@@ -82,6 +83,14 @@ export default {
                 },
             ],
             Widths: '0px'
+        }
+    },
+    methods: {
+        handleClick() {
+            this.$router.push(`/actormessage`).catch( err => {
+                // console.log(err);
+                
+            })
         }
     },
     mounted() {

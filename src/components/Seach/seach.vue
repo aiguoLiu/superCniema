@@ -8,7 +8,7 @@
         <div class="box">
             <div>
                 <i class="iconfont sea">&#xe67d;</i>
-                <input type="text" placeholder="搜影院">
+                <input type="text" placeholder="搜电影、搜影院">
             </div>
             <span @click="handleBack">取消</span>
         </div>
@@ -97,6 +97,7 @@ export default {
                 vertical-align: 0;
                 }
                 input {
+                    outline: none;//让Input标签失去边框
                     border: none;
                     width: 50%;
                     height: 100%;

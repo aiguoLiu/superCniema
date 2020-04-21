@@ -65,7 +65,9 @@ export default {
             }
         }
         div.router-link-active {
-            border-bottom: 2px solid red;
+            border-bottom: 1.5px solid red;
+            font-size: 1rem !important;
+            color: #333;
         }
         .center {
             width: 60%;
@@ -73,28 +75,29 @@ export default {
             .center_one {
                 float: left;
                 width: 50%;
+                font-size: .85rem;
+                font-weight: 700;
                 span {
                     display: inline-block;
                     width: 80%;
                     height: 2.1875rem;
-                    font-size: .9375rem;
                     text-align: center;
                     line-height: 2.1875rem;
-                    font-weight: 600;
                     margin-left: .9375rem;
+                    
                 }
             }
             .center_tow {
                 float: right;
                 width: 50%;
+                font-size: .85rem;
+                font-weight: 700;
                 span {
                     display: inline-block;
                     width: 80%;
                     height: 2.1875rem;
-                    font-size: .9375rem;
                     text-align: center;
                     line-height: 2.1875rem;
-                    font-weight: 600;
                     margin-left: .9375rem;
                 }
             }

@@ -6,6 +6,8 @@ import fileproRouter from './filepro'
 import cinemaRouter from './cinema'
 import cityRouter from './city'
 import seachRouter from './Seach'
+import actorRouter from './ActorMessage'
+
 Vue.use(VueRouter)
 
   const routes = [
@@ -14,6 +16,7 @@ Vue.use(VueRouter)
     cinemaRouter,
     cityRouter,
     seachRouter,
+    actorRouter,
     // 默认路由
     {
       path: '',
