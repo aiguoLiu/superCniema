@@ -7,10 +7,26 @@
         </Header>
         <div class="box">
             <div>
-                <i class="iconfont sea">&#xe67d;</i>
-                <input type="text" placeholder="搜电影、搜影院">
+                <i class="iconfont sea" @click="handleSearch">&#xe67d;</i>
+                <input type="text" v-model="searcher" placeholder="搜电影、搜影院">
             </div>
             <span @click="handleBack">取消</span>
+        </div>
+        <!-- 被搜索的数据 -->
+        <div style="display: none" class="txt" >
+            <p class="text" v-for="(item,index) in textArr" :key="index">{{ item.movies }}</p>
+        </div>
+        <!-- 数据结果展示 -->
+        <div v-if="textArrElse.length>0" class="txt" >
+            <p class="text" v-for="(item,index) in textArrElse" :key="index">{{ item.movies }}</p>
+        </div>
+        <!-- 结果为空的提示 -->
+        <div v-else style="position: fixed; top: 300px; left: 100px;">
+            <img src="../../assets/imgs/logo.jpg" alt="" 
+                style="width: 100px; height: 150px; margin-left: 50px;"
+                v-show="isShow">
+            <p style="font-weight: 600; color: #888;"
+                v-show="isShow">抱歉，您搜索的内容不存在</p>
         </div>
     </div>
 </template>
@@ -21,15 +37,65 @@ import Header from '@/components/Header';
 import axios from 'axios'
 export default {
     name: 'Seach',
+    data() {
+        return {
+            searcher: '',
+            textArr: [
+                {
+                    id: 1,
+                    movies: '爱情公寓5'
+                },
+                {
+                    id: 2,
+                    movies: '爱情公寓4'
+                },
+                {
+                    id: 3,
+                    movies: '爱情公寓3'
+                },
+                {
+                    id: 4,
+                    movies: '爱情公寓2'
+                },
+                {
+                    id: 5,
+                    movies: '爱情公寓'
+                },
+                {
+                    id: 6,
+                    movies: '老九门'
+                }
+            ],
+            textArrElse: [],
+            isShow: false
+        }
+    },
     components: {
         Header
+    },
+    computed: {
+            
     },
     methods: {
         handleBack() {
             this.$router.go(-1)
+        },
+
+        handleSearch() {
+            // 清空上次搜索的内容
+            this.textArrElse.length = 0
+            this.textArr.filter(( item,index) => {
+                if(item.movies.indexOf(this.searcher) !== -1){
+                    this.textArrElse.push(item)
+                    this.isShow = true
+                }
+            })
+            //清空数据
+            this.searcher = ''
         }
     },
     mounted() {
+        this.isShow = false
         // axios.get("https://m.maizuo.com/gateway?cityId=310100&pageNum=1&pageSize=10&type=1&k=1030110").then(res => {
 
         // })
@@ -114,6 +180,23 @@ export default {
                 text-align: right;
                 color: red;
             }
-        }   
+        }
+        .txt {
+            width: 100%;
+            height: 2rem;
+            p {
+                display: inline-block;
+                line-height: 2rem;
+                color: #b0b0bb;
+                margin-left: 10%;
+                border-bottom: 1px solid #e0e0ee;
+                padding-left: -10%;
+            } 
+            .text {
+                width: 90%;
+                font-weight: 600;
+            }
+        }  
+        
     }
 </style>
