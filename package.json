@@ -21,7 +21,7 @@
     "@vue/cli-service": "~4.3.0",
     "sass": "^1.26.3",
     "sass-loader": "^8.0.2",
-    "swiper": "^5.3.7",
+    "swiper": "^6.5.1",
     "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [
